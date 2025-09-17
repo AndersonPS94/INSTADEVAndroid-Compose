@@ -6,27 +6,27 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.instadev.R
 
 @Preview(showBackground = true)
 @Composable
-fun LoginScreen() {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+fun LoginScreen(loginViewModel: LoginViewModel = viewModel() ) {
+    val uiState by loginViewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold { padding ->
-
         Column(
             Modifier
-                .background(Color.White)
+                .background(MaterialTheme.colorScheme.background)
                 .padding(padding)
                 .padding(horizontal = 24.dp)
                 .fillMaxSize(),
@@ -35,7 +35,7 @@ fun LoginScreen() {
 
             Text(
                 "Português (Brasil)",
-                color = Color.Gray,
+                color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.padding(top = 22.dp)
             )
 
@@ -43,9 +43,7 @@ fun LoginScreen() {
 
             Image(
                 modifier = Modifier.size(56.dp),
-                painter = painterResource(
-                    id = R.drawable.instadev_logo
-                ),
+                painter = painterResource(id = R.drawable.instadev_logo),
                 contentDescription = "InstaDev Logo Header"
             )
 
@@ -53,35 +51,36 @@ fun LoginScreen() {
 
             OutlinedTextField(
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF3797EF),
-                    unfocusedBorderColor = Color.Gray,
-                    focusedLabelColor = Color(0xFF3797EF),
-                    unfocusedLabelColor = Color.Gray,
-                    cursorColor = Color(0xFF3797EF),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    cursorColor = MaterialTheme.colorScheme.primary,
                 ),
                 maxLines = 1,
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
-                value = email,
-                label = { Text("Usuário, Email ou Telefone") },
-                onValueChange = { email = it },
+                value = uiState.email,
+                label = { Text("Usuário, Email ou Telefone", color = MaterialTheme.colorScheme.onBackground) },
+                onValueChange = { loginViewModel.onEmailChanged(it) },
             )
+
             Spacer(modifier = Modifier.height(8.dp))
 
             OutlinedTextField(
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF3797EF),
-                    unfocusedBorderColor = Color.Gray,
-                    focusedLabelColor = Color(0xFF3797EF),
-                    unfocusedLabelColor = Color.Gray,
-                    cursorColor = Color(0xFF3797EF),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    cursorColor = MaterialTheme.colorScheme.primary,
                 ),
                 maxLines = 1,
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(30),
-                value = password,
-                label = { Text("Senha") },
-                onValueChange = { password = it },
+                value = uiState.password,
+                label = { Text("Senha", color = MaterialTheme.colorScheme.onBackground) },
+                onValueChange = { loginViewModel.onPasswordChanged(it) },
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -89,39 +88,39 @@ fun LoginScreen() {
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF3797EF), // Azul padrão Instagram
-                    contentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
                 ),
-                onClick = { }
+                onClick = { },
+                enabled = uiState.isLoginEnabled
             ) {
                 Text(
                     modifier = Modifier.padding(vertical = 4.dp),
-                    text = "Iniciar Sessão"
+                    text = "Iniciar Sessão",
+                    color = MaterialTheme.colorScheme.onPrimary,
                 )
             }
 
             TextButton(onClick = { }) {
                 Text(
                     "Esqueci minha senha",
-                    color = Color(0xFF3797EF)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
             Spacer(modifier = Modifier.weight(1.3f))
 
             OutlinedButton(
-                border = BorderStroke(1.dp, Color(0xFF3797EF)),
+                border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {},
                 colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = Color(0xFF3797EF),
-                    containerColor = Color.White,
-
+                    contentColor = MaterialTheme.colorScheme.primary
                 )
             ) {
                 Text(
                     "Criar uma conta",
-                    color = Color(0xFF3797EF)
+                    color = MaterialTheme.colorScheme.primary
                 )
             }
 
@@ -131,7 +130,7 @@ fun LoginScreen() {
                     .padding(vertical = 24.dp),
                 painter = painterResource(id = R.drawable.ic_meta),
                 contentDescription = "meta logo",
-                tint = Color.Gray,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
     }
