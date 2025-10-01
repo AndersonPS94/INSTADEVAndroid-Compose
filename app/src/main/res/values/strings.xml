@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">InstaDev</string>
+
+    <!-- Login Screen -->
+    <string name="language">Português (Brasil)</string>
+    <string name="username_email_phone">Usuário, Email ou Telefone</string>
+    <string name="password">Senha</string>
+    <string name="login">Iniciar Sessão</string>
+    <string name="forgot_password">Esqueci minha senha</string>
+    <string name="create_account">Criar uma conta</string>
 </resources>
