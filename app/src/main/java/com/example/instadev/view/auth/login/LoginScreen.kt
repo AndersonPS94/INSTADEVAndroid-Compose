@@ -36,7 +36,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel() ) {
             Text(
                 "Português (Brasil)",
                 color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.padding(top = 22.dp)
+                modifier = Modifier.padding(top = 22.dp),
+                style = MaterialTheme.typography.bodyLarge
             )
 
             Spacer(modifier = Modifier.weight(1f))
@@ -92,7 +93,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel() ) {
                     contentColor = MaterialTheme.colorScheme.onPrimary
                 ),
                 onClick = { },
-                enabled = uiState.isLoginEnabled
+                enabled = uiState.isLoginEnabled,
+                shape = MaterialTheme.shapes.extraLarge
             ) {
                 Text(
                     modifier = Modifier.padding(vertical = 4.dp),
@@ -104,8 +106,8 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel() ) {
             TextButton(onClick = { }) {
                 Text(
                     "Esqueci minha senha",
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
             }
 
             Spacer(modifier = Modifier.weight(1.3f))
