@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.instadev.ui.theme.InstaDevTheme
+import com.example.instadev.view.auth.register.RegisterScreen
 import com.example.instadev.view.core.navigation.NavigationWrapper
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InstaDevTheme {
-            NavigationWrapper()
+                RegisterScreen()
             }
         }
     }

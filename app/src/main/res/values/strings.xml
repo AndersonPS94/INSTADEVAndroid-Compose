@@ -8,4 +8,17 @@
     <string name="login">Iniciar Sessão</string>
     <string name="forgot_password">Esqueci minha senha</string>
     <string name="create_account">Criar uma conta</string>
+
+    <!-- Register Screen -->
+    <string name="register">Qual é seu numero de celular ?</string>
+    <string name="register_screen_subtitle">Insira seu telefone de contato. </string>
+    <string name="register_screen_body">Pode receber notificações no Whatsapp e por SMS por motivos de segurança e para iniciar sessao. </string>
+    <string name="register_screen_textfield_register">Numero de celular</string>
+    <string name="register_screen_button_with_email">Registrar com email eletrónico</string>
+    <string name="register_screen_text_find_my_account">Buscar minha conta</string>
+    <string name="register_screen_button_next">Próximo</string>
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+    <string name="phone">Telefone</string>
+    <string name="register_button">Registrar</string>
 </resources>

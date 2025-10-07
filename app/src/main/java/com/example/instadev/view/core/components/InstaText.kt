@@ -10,10 +10,10 @@ import androidx.compose.ui.text.TextStyle
 
 @Composable
 fun InstaText(
-    modifier: Modifier = Modifier,
+
     text: String,
     color: Color = MaterialTheme.colorScheme.onBackground,
     style: TextStyle= MaterialTheme.typography.bodyLarge
     ) {
-    Text(text = text, color = color, modifier = modifier, style = style)
+    Text(text = text, color = color, style = style)
 }

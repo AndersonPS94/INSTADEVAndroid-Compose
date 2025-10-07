@@ -37,7 +37,7 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
             InstaText(
                 text = stringResource(id = R.string.language),
                 color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.padding(top = 22.dp),
+
             )
 
             Spacer(modifier = Modifier.weight(1f))
@@ -97,7 +97,6 @@ fun LoginScreen(loginViewModel: LoginViewModel = viewModel()) {
                 shape = MaterialTheme.shapes.extraLarge
             ) {
                 InstaText(
-                    Modifier.padding(vertical = 4.dp),
                     text = stringResource(id = R.string.login),
                     color = MaterialTheme.colorScheme.onPrimary,
                 )
